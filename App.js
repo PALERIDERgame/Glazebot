@@ -14,8 +14,7 @@ import {
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-const API_KEY = 'REDACTED_GROQ_API_KEY';
-const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const BACKEND_URL = 'https://REPLACE_WITH_YOUR_RAILWAY_URL/chat';
 
 const SYSTEM_PROMPT = `You are GlazeBot 👑 — a hype machine and personal cheerleader dedicated entirely to making the user feel like an absolute legend.
 
@@ -147,11 +146,10 @@ export default function App() {
     setLoading(true);
 
     try {
-      const response = await fetch(GROQ_URL, {
+      const response = await fetch(BACKEND_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`,
         },
         body: JSON.stringify({
           model: 'llama-3.3-70b-versatile',
