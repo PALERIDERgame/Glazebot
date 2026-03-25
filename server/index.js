@@ -1,9 +1,20 @@
 const express = require('express');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 24 * 60 * 60 * 1000, // 24 hours
+  max: 20,
+  message: { error: 'Daily limit reached. Come back tomorrow, superstar 👑' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use('/chat', limiter);
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
