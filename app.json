@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "GlazeBot",
+    "slug": "glazebot",
+    "owner": "rafthom",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0800"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.glazebot.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a0800"
+      },
+      "package": "com.glazebot.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7e0b3da0-5412-49f3-b999-2f33792d67ed"
+      }
+    }
+  }
+}
