@@ -16,7 +16,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const isNative = Platform.OS !== 'web';
 
-const BACKEND_URL = 'https://glazebot-production.up.railway.app/chat';
+const API_BASE_URL = (process.env.EXPO_PUBLIC_API_URL || 'https://glazebot-production.up.railway.app').replace(/\/$/, '');
+const BACKEND_URL = `${API_BASE_URL}/chat`;
 
 const SYSTEM_PROMPT = `You are GlazeBot — a hype machine and personal cheerleader dedicated entirely to making the user feel like an absolute legend.
 
@@ -233,7 +234,7 @@ export default function App() {
         { id: (Date.now() + 1).toString(), role: 'bot', text: botText },
       ]);
     } catch (err) {
-      console.error('Gemini error:', err?.message || err);
+      console.error('Chat request failed:', err?.message || err);
       historyRef.current = historyRef.current.slice(0, -1); // remove failed user message
       setMessages((prev) => [
         ...prev,
